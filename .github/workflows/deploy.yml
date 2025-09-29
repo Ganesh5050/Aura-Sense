@@ -1,0 +1,66 @@
+name: Deploy AuraSense
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build frontend
+      run: npm run build
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        cname: aurasense.ganesh5050.github.io
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        cd Speech_Emotion_Detection-main
+        pip install -r requirements.txt
+    
+    - name: Train model
+      run: |
+        cd Speech_Emotion_Detection-main
+        python create_sample_dataset.py
+    
+    - name: Create deployment package
+      run: |
+        cd Speech_Emotion_Detection-main
+        zip -r ../backend-deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*"
+    
+    - name: Upload backend artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-deployment
+        path: backend-deployment.zip
