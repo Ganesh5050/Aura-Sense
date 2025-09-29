@@ -19,7 +19,44 @@ A modern web application that detects emotions from speech using machine learnin
 
 ## 🚀 Quick Start
 
-### Option 1: Use Startup Scripts
+### **Follow these direct steps:**
+
+**1. Step 1: Clone the repository using the project's Git URL.**
+```bash
+git clone https://github.com/Ganesh5050/Aura-Sense.git
+```
+
+**2. Step 2: Navigate to the project directory.**
+```bash
+cd Aura-Sense
+```
+
+**3. Step 3: Install the necessary dependencies.**
+```bash
+# Frontend dependencies
+npm i
+
+# Backend dependencies
+cd Speech_Emotion_Detection-main
+pip install -r requirements.txt
+cd ..
+```
+
+**4. Step 4: Start the development server with auto-reloading and an instant preview.**
+```bash
+# Terminal 1 - Start Backend
+cd Speech_Emotion_Detection-main
+python app/app.py
+
+# Terminal 2 - Start Frontend
+npm run dev
+```
+
+**5. Access the application**
+- Frontend: http://localhost:8080 (or 8081)
+- Backend API: http://localhost:5000
+
+### Alternative: Use Startup Scripts
 ```bash
 # Windows
 .\start.bat
@@ -28,38 +65,6 @@ A modern web application that detects emotions from speech using machine learnin
 chmod +x start.sh
 ./start.sh
 ```
-
-### Option 2: Manual Setup
-
-**1. Clone the repository**
-```bash
-git clone https://github.com/Ganesh5050/Aura-Sense.git
-cd Aura-Sense
-```
-
-**2. Install dependencies**
-```bash
-# Frontend dependencies
-npm install
-
-# Backend dependencies
-cd Speech_Emotion_Detection-main
-pip install -r requirements.txt
-```
-
-**3. Start the application**
-```bash
-# Terminal 1 - Backend
-cd Speech_Emotion_Detection-main
-python app/app.py
-
-# Terminal 2 - Frontend
-npm run dev
-```
-
-**4. Access the application**
-- Frontend: http://localhost:8080
-- Backend API: http://localhost:5000
 
 ## 🏗️ Architecture
 
@@ -113,6 +118,32 @@ MLPClassifier(
 - 😨 **Fearful** - Anxious, scared speech
 - 😐 **Neutral** - Flat, emotionless speech
 - 😌 **Calm** - Peaceful, relaxed speech
+
+## 📝 Additional Information
+
+### **Edit a file directly in GitHub:**
+- Navigate to the file you want to edit
+- Click "Edit" (pencil icon)
+- Make changes and commit directly
+
+### **Use GitHub Codespaces:**
+- Navigate to your repository
+- Click "Code" button
+- Select "Codespaces" tab
+- Click "New codespace"
+- Edit and push changes
+
+### **What technologies are used for this project?**
+- **Frontend**: Vite, TypeScript, React, shadcn-ui, Tailwind CSS
+- **Backend**: Flask, Python, Scikit-learn, Librosa
+- **ML**: Multi-Layer Perceptron (MLP) Classifier
+- **Audio Processing**: MediaRecorder API, FFmpeg
+
+### **How can I deploy this project?**
+Simply push to the master branch and GitHub Actions will automatically deploy to GitHub Pages.
+
+### **Can I connect a custom domain to my project?**
+Yes, you can! To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 ## 🛠️ Development
 
