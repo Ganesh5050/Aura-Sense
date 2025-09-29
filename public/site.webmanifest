@@ -1,0 +1,23 @@
+{
+  "name": "AuraSense - AI Speech Emotion Recognition",
+  "short_name": "AuraSense",
+  "description": "Advanced AI that analyzes speech patterns to reveal emotional landscapes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f23",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/aurasense-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-simple.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+

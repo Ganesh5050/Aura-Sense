@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AuraSense Design System - Futuristic AI Emotion Recognition */
+
+@layer base {
+  :root {
+    /* Base Colors - Light Theme */
+    --background: 240 25% 98%;
+    --foreground: 270 15% 15%;
+
+    /* Glass & Cards */
+    --glass-bg: 270 20% 95%;
+    --glass-border: 270 30% 85%;
+    --card: 270 25% 97%;
+    --card-foreground: 270 15% 15%;
+
+    /* Primary - Purple/Violet AI Theme */
+    --primary: 270 70% 60%;
+    --primary-light: 270 70% 75%;
+    --primary-dark: 270 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Cyan Tech */
+    --secondary: 190 80% 60%;
+    --secondary-light: 190 80% 75%;
+    --secondary-dark: 190 80% 45%;
+    --secondary-foreground: 270 15% 15%;
+
+    /* Accent - Pink/Magenta */
+    --accent: 320 70% 65%;
+    --accent-light: 320 70% 80%;
+    --accent-dark: 320 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Emotion Colors */
+    --happy: 50 90% 65%;
+    --sad: 210 70% 60%;
+    --angry: 0 80% 60%;
+    --fearful: 270 60% 65%;
+    --neutral: 200 15% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
+    --gradient-emotion: linear-gradient(135deg, hsl(var(--happy)), hsl(var(--accent)));
+    --gradient-glass: linear-gradient(135deg, hsla(270, 20%, 95%, 0.8), hsla(270, 25%, 90%, 0.6));
+
+    /* Shadows & Depth */
+    --shadow-glass: 0 8px 32px hsla(270, 30%, 20%, 0.1);
+    --shadow-neumorphism: 8px 8px 16px hsla(270, 30%, 20%, 0.1), -8px -8px 16px hsla(0, 0%, 100%, 0.8);
+    --shadow-glow: 0 0 40px hsla(var(--primary), 0.3);
+    --shadow-hover: 0 12px 40px hsla(270, 30%, 20%, 0.15);
+
+    /* Animation Variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Glass Effects */
+    --blur-glass: blur(20px);
+    --backdrop-opacity: 0.8;
+
+    --border: 270 30% 85%;
+    --input: 270 25% 92%;
+    --ring: 270 70% 60%;
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Base Colors - Dark Theme */
+    --background: 270 25% 8%;
+    --foreground: 270 20% 90%;
+
+    /* Glass & Cards */
+    --glass-bg: 270 25% 12%;
+    --glass-border: 270 30% 20%;
+    --card: 270 20% 10%;
+    --card-foreground: 270 20% 90%;
+
+    /* Primary - Brighter in dark */
+    --primary: 270 80% 70%;
+    --primary-light: 270 80% 85%;
+    --primary-dark: 270 80% 55%;
+
+    /* Secondary - Cyan */
+    --secondary: 190 90% 70%;
+    --secondary-light: 190 90% 85%;
+    --secondary-dark: 190 90% 55%;
+
+    /* Accent - Pink */
+    --accent: 320 80% 75%;
+    --accent-light: 320 80% 90%;
+    --accent-dark: 320 80% 60%;
+
+    /* Emotion Colors - Adjusted for dark */
+    --happy: 50 95% 70%;
+    --sad: 210 80% 70%;
+    --angry: 0 85% 70%;
+    --fearful: 270 70% 75%;
+    --neutral: 200 20% 70%;
+
+    /* Gradients - Enhanced for dark */
+    --gradient-glass: linear-gradient(135deg, hsla(270, 25%, 15%, 0.8), hsla(270, 30%, 10%, 0.6));
+
+    /* Shadows - More pronounced in dark */
+    --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+    --shadow-neumorphism: 8px 8px 16px hsla(0, 0%, 0%, 0.3), -8px -8px 16px hsla(270, 30%, 15%, 0.8);
+    --shadow-glow: 0 0 50px hsla(var(--primary), 0.4);
+    --shadow-hover: 0 12px 40px hsla(0, 0%, 0%, 0.4);
+
+    --border: 270 30% 20%;
+    --input: 270 25% 15%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Effects */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: var(--blur-glass);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card {
+    @apply glass rounded-[var(--radius)] transition-all duration-300;
+  }
+
+  .glass-nav {
+    @apply glass backdrop-blur-xl border-b border-glass-border/50;
+  }
+
+  /* Neumorphism Effects */
+  .neuro {
+    box-shadow: var(--shadow-neumorphism);
+    @apply rounded-[var(--radius)];
+  }
+
+  /* Gradient Buttons */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    @apply text-white font-semibold px-8 py-4 rounded-[var(--radius)] shadow-lg;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-hover), var(--shadow-glow);
+  }
+
+  .btn-accent {
+    background: var(--gradient-accent);
+    @apply text-white font-semibold px-6 py-3 rounded-[var(--radius)];
+    transition: var(--transition-bounce);
+  }
+
+  .btn-accent:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  /* Emotion Auras */
+  .aura-happy {
+    box-shadow: 0 0 30px hsl(var(--happy)), 0 0 60px hsla(var(--happy), 0.4);
+  }
+
+  .aura-sad {
+    box-shadow: 0 0 30px hsl(var(--sad)), 0 0 60px hsla(var(--sad), 0.4);
+  }
+
+  .aura-angry {
+    box-shadow: 0 0 30px hsl(var(--angry)), 0 0 60px hsla(var(--angry), 0.4);
+  }
+
+  .aura-fearful {
+    box-shadow: 0 0 30px hsl(var(--fearful)), 0 0 60px hsla(var(--fearful), 0.4);
+  }
+
+  .aura-neutral {
+    box-shadow: 0 0 30px hsl(var(--neutral)), 0 0 60px hsla(var(--neutral), 0.4);
+  }
+
+  /* Animated Backgrounds */
+  .gradient-bg {
+    background: linear-gradient(45deg, 
+      hsl(var(--primary)), 
+      hsl(var(--secondary)), 
+      hsl(var(--accent)), 
+      hsl(var(--primary))
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    filter: drop-shadow(0 0 20px hsl(var(--primary)));
+  }
+
+  .glow-accent {
+    filter: drop-shadow(0 0 20px hsl(var(--accent)));
+  }
+
+  /* Input Styles */
+  .input-glass {
+    @apply glass-card bg-transparent border-glass-border/50 focus:border-primary/50 focus:ring-2 focus:ring-primary/20;
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-accent-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animations */
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: var(--shadow-glow); }
+    50% { box-shadow: 0 0 60px hsla(var(--primary), 0.6); }
+  }
+
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-wave {
+    animation: wave 10s linear infinite;
+  }
+}
